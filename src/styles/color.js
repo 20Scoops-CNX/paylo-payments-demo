@@ -1,4 +1,6 @@
 export const color = {
+  text: '#202124',
+  red: '#C71E35',
   primary: '#2156ae',
   lightBlue: '#3578e5',
   secondary: '#2C2C2C',
