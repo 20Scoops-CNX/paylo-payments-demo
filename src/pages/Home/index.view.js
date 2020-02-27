@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import pattern from 'assets/Pattern.jpg';
 import hotelImage from 'assets/HeroImage.jpg';
 
@@ -23,10 +24,14 @@ Header.BookButton = styled.a`
 const Content = styled.main`
   background: #fff;
   background-image: url(${`${pattern}`});
-  background-position: left 40px;
   background-repeat: no-repeat;
   display: flex;
   height: calc(100vh - 80px);
+  transition: background-position 0.2s ease;
+  ${media.lessThan('medium')`
+    background-position: -189px  40px;
+    height: calc(100vh - 250px);
+  `}
 `;
 const Title = styled.h1`
   ${({ theme: { fonts } }) => fonts.loraFont()};
@@ -65,6 +70,11 @@ const VericalText = styled.div`
   font-size: 16px;
   line-height: 35px;
   text-align: center;
+
+  ${media.lessThan('medium')`
+    font-size: 14px;
+    line-height: 29px;
+  `}
 `;
 const Description = styled.div`
   position: absolute;
@@ -82,7 +92,15 @@ const TextLeft = styled.div`
     bottom: 64px;
     left: 64px;
     position: absolute;
+
+    ${media.lessThan('medium')`
+      bottom: -190px;
+    `}
   }
+
+  ${media.lessThan('medium')`
+    width: 130px;
+  `}
 `;
 const ImageRight = styled.div`
   flex: 1;
