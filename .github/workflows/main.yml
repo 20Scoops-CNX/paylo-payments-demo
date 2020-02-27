@@ -1,0 +1,99 @@
+name: Paylo Payment - Workflows
+on: [push, pull_request]
+
+jobs:
+  install-and-check:
+    name: Install and QA checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: yarn
+
+      - name: QA Review
+        run: |
+          yarn test
+          yarn lint:check
+          yarn stylelint:check
+          yarn prettier:check
+          # yarn check-bundle-size
+        env:
+          CI: true
+
+      - name: Slack Notification Install and QA checks
+        if: always()
+        uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.repository }}
+          fields: repo,message,action,author
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  build-and-deploy-staging:
+    name: Build and Deploy (Staging)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    needs: install-and-check
+
+    if: github.event_name == 'push' && endsWith(github.ref, 'staging')
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: yarn
+
+      - name: Build
+        run: |
+          ./prod/env/generate-env --env=${GITHUB_REF#refs/heads/}
+          yarn build
+        env:
+          CI: true
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete --cache-control 'public, max-age=0, must-revalidate'
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_STAGING }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'eu-central-1'
+          SOURCE_DIR: 'build'
+
+      - name: Purge Cloudflare
+        run: |
+          ./prod/purge
+        env:
+          CF_ZONE_ID: ${{secrets.CF_ZONE_ID}}
+          CF_API_TOKEN: ${{secrets.CF_API_TOKEN}}
+
+      - name: Slack Notification Build and Deploy
+        if: always()
+        uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.repository }}
+          fields: repo,message,action,author
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
