@@ -18,7 +18,7 @@ const Home = () => {
         <Logo>
           <HotelLogo />
         </Logo>
-        <BookButton href="#">Book now</BookButton>
+        <BookButton href="/rooms">Book now</BookButton>
       </Header>
       <Content>
         <TextLeft>
