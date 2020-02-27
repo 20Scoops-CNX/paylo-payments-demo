@@ -25,6 +25,7 @@ const Content = styled.main`
   background: #fff;
   background-image: url(${`${pattern}`});
   background-repeat: no-repeat;
+  background-position: left 40px;
   display: flex;
   height: calc(100vh - 80px);
   transition: background-position 0.2s ease;
