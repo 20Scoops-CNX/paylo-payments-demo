@@ -1,4 +1,4 @@
-name: Paylo Payment - Workflows
+name: PayLo payments demo
 on: [push, pull_request]
 
 jobs:
