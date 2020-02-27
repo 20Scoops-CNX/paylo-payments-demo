@@ -6,7 +6,6 @@ import theme from './styles/theme';
 import Router from './Router';
 import ScrollToTop from './components/ScrollToTop';
 import RemoveFocusWhenNotTab from './components/RemoveFocusWhenNotTab';
-import './i18n';
 
 const App = () => {
   return (
