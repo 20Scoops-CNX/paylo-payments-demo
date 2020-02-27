@@ -1,14 +1,40 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  Header,
+  Title,
+  Content,
+  TextLeft,
+  ImageRight,
+  VericalText,
+  Description
+} from './index.view';
+import { ReactComponent as HotelLogo } from 'assets/Logo.svg';
 
-const HomePropTypes = {
-  history: PropTypes.object
-};
-
+const { Logo, BookButton } = Header;
 const Home = () => {
-  return <div>Home page</div>;
+  return (
+    <div>
+      <Header>
+        <Logo>
+          <HotelLogo />
+        </Logo>
+        <BookButton href="#">Book now</BookButton>
+      </Header>
+      <Content>
+        <TextLeft>
+          <Title>
+            Perfect <br /> Palace
+          </Title>
+          <Description>
+            <VericalText>Best</VericalText>
+            <VericalText>vacation</VericalText>
+            <VericalText>for</VericalText>
+            <VericalText>you</VericalText>
+          </Description>
+        </TextLeft>
+        <ImageRight />
+      </Content>
+    </div>
+  );
 };
-
-Home.propTypes = HomePropTypes;
-
 export default Home;
