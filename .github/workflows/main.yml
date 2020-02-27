@@ -42,15 +42,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
-  build-and-deploy-staging:
-    name: Build and Deploy (Staging)
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x]
     needs: install-and-check
 
-    if: github.event_name == 'push' && endsWith(github.ref, 'staging')
+    # if: github.event_name == 'push' && endsWith(github.ref, 'develop')
     steps:
       - uses: actions/checkout@master
 
@@ -74,7 +74,7 @@ jobs:
         with:
           args: --delete --cache-control 'public, max-age=0, must-revalidate'
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_STAGING }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-central-1'
