@@ -86,14 +86,3 @@ jobs:
         env:
           CF_ZONE_ID: ${{secrets.CF_ZONE_ID}}
           CF_API_TOKEN: ${{secrets.CF_API_TOKEN}}
-
-      - name: Slack Notification Build and Deploy
-        if: always()
-        uses: 8398a7/action-slack@v2
-        with:
-          status: ${{ job.status }}
-          author_name: ${{ github.repository }}
-          fields: repo,message,action,author
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
