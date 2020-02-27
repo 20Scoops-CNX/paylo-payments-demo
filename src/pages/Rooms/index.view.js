@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import roomImage from 'assets/RoomImage.jpg';
+import { ReactComponent as CalendarSvg } from 'assets/calendar.svg';
+import { ReactComponent as ClockSvg } from 'assets/clock.svg';
 
 const Wrapper = styled.div`
   max-width: 1344px;
   margin: 0 auto;
+  padding: 0px 48px;
 `;
 Wrapper.TopContent = styled.div`
   display: flex;
+  height: 104px;
+  align-items: flex-end;
 `;
 Wrapper.BottomContent = styled.div`
   display: grid;
@@ -33,9 +38,49 @@ const DateAvaliable = styled.button`
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
 `;
-const StayDates = styled.div``;
-const Total = styled.div``;
+const ClockIcon = styled(ClockSvg)`
+  height: 20px;
+  width: 20px;
+  margin-right: 6px;
+`;
+const CalendarIcon = styled(CalendarSvg)`
+  height: 20px;
+  width: 20px;
+  margin: 22px 36px 0px 52px;
+`;
+const StayDates = styled.div`
+  line-height: 24px;
+`;
+const Total = styled.div`
+  height: 50px;
+  margin-left: 18px;
+  padding-left: 19px;
+  line-height: 24px;
+  position: relative;
+  &:before {
+    content: '';
+    left: 0;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    display: block;
+    background: linear-gradient(
+      90deg,
+      #bc945d 0.01%,
+      #957040 27.85%,
+      #c79b60 42.6%,
+      #eebc79 55.84%,
+      #fdc983 62.75%,
+      #ebba78 70.85%,
+      #be935b 86.93%,
+      #957040 100%
+    );
+  }
+`;
 const Card = styled.div`
   background: red;
   background-size: cover;
@@ -59,13 +104,13 @@ const Button = styled.a`
   padding: 50px 26px;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 Card.Img = styled.div`
   background: #fff;
   background-image: url(${`${roomImage}`});
   background-position: center;
   background-repeat: no-repeat;
-  cursor: pointer;
   display: flex;
   height: calc(100vh - 80px);
   height: 100%;
@@ -107,5 +152,7 @@ export {
   Card,
   DateAvaliable,
   Button,
-  DescriptionTotal
+  DescriptionTotal,
+  ClockIcon,
+  CalendarIcon
 };

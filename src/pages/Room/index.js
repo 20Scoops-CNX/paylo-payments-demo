@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Wrapper,
   Title,
@@ -23,8 +24,8 @@ import imageProfile from 'assets/ImageProfile.png';
 import checkoutButton from 'assets/CheckoutButton.png';
 
 const Roomd = () => {
-  useEffect(() => {
-    fetch('http://fd878039.ngrok.io/booking/hotel', {
+  const handleCheckout = () => {
+    fetch('http://localhost:8080/booking/hotel', {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -39,10 +40,10 @@ const Roomd = () => {
       .then(function(response) {
         return response.json();
       })
-      .then(function(data) {});
-  }, []);
-
-  const handleCheckout = () => {};
+      .then(function(data) {
+        window.location.assign(data.redirect_url);
+      });
+  };
 
   return (
     <Wrapper>

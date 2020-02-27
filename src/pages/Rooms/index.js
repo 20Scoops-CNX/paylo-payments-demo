@@ -8,15 +8,21 @@ import {
   Card,
   DateAvaliable,
   Button,
-  DescriptionTotal
+  DescriptionTotal,
+  ClockIcon,
+  CalendarIcon
 } from './index.view';
 
-const Roomds = () => {
+const Rooms = () => {
   return (
     <Wrapper>
       <Wrapper.TopContent>
         <BookBox>
-          <DateAvaliable>Only date available</DateAvaliable>
+          <DateAvaliable>
+            <ClockIcon />
+            Only date available
+          </DateAvaliable>
+          <CalendarIcon />
           <StayDates>
             <span>Stay Dates</span>
             <div>Fri, Sep 25, 2020 - Wed 30, Sep 30, 2020</div>
@@ -40,7 +46,7 @@ const Roomds = () => {
                   <span>x6 3360,00 EUR</span>
                 </DescriptionTotal>
               </Card.Description>
-              <Button>Choose Room</Button>
+              <Button href={`/rooms/${i}`}>Choose Room</Button>
             </Card.Content>
           </Card>
         ))}
@@ -48,4 +54,4 @@ const Roomds = () => {
     </Wrapper>
   );
 };
-export default Roomds;
+export default Rooms;
