@@ -2,48 +2,86 @@ import React from 'react';
 import {
   Wrapper,
   Title,
-  BookBox,
-  StayDates,
+  RoomDetail,
+  PriceDetail,
+  RoomName,
+  BookingDetailSummary,
+  CheckIn,
+  CheckOut,
   Total,
-  Card,
-  DateAvaliable,
-  Button,
-  DescriptionTotal
+  UserDetails,
+  Avatar,
+  Name,
+  Lastname,
+  Email,
+  TotalPrice,
+  WrapperCheckout,
+  PayloCheckout
 } from './index.view';
+import roomImage from 'assets/RoomImage.jpg';
+import imageProfile from 'assets/ImageProfile.png';
+import checkoutButton from 'assets/CheckoutButton.png';
 
 const Roomd = () => {
   return (
     <Wrapper>
       <Wrapper.TopContent>
-        <BookBox>
-          <DateAvaliable>Only date available</DateAvaliable>
-          <StayDates>
-            <span>Stay Dates</span>
-            <div>Fri, Sep 25, 2020 - Wed 30, Sep 30, 2020</div>
-          </StayDates>
-          <Total>
-            <span>Total for Stay</span>
-            <div>560,00 EUR x 6</div>
-          </Total>
-        </BookBox>
-        <Title>Rooms</Title>
+        <Title>Check Out</Title>
       </Wrapper.TopContent>
       <Wrapper.BottomContent>
-        {[...Array(4)].map((v, i) => (
-          <Card key={i}>
-            <Card.Img />
-            <Card.Content>
-              <Card.Description>
-                <h3>Moxy double sleeper, Guest room, 2 Twin/Single bed(s)</h3>
-                <DescriptionTotal>
-                  <span>560,00 EUR / Night</span>
-                  <span>x6 3360,00 EUR</span>
-                </DescriptionTotal>
-              </Card.Description>
-              <Button>Choose Room</Button>
-            </Card.Content>
-          </Card>
-        ))}
+        <RoomDetail>
+          <img src={roomImage} alt="room" />
+          <RoomName>
+            Moxy double sleeper, Guest room, 2 Twin/Single bed(s)
+          </RoomName>
+          <BookingDetailSummary>
+            <CheckIn>
+              <span>Check IN</span>
+              Fri, Sep 25, 2020
+            </CheckIn>
+            <CheckOut>
+              <span>Check OUT</span>
+              Wed 30, Sep 30, 2020
+            </CheckOut>
+            <Total>
+              <span>Total for Stay</span>
+              560.00 EUR x 6
+            </Total>
+          </BookingDetailSummary>
+          <p>
+            <strong>3360.00 EUR Total for stay in hotel’s currency</strong>
+            <br /> Estimted government taxes and fees - Included
+          </p>
+        </RoomDetail>
+        <PriceDetail>
+          <h5>Personal Information</h5>
+          <UserDetails>
+            <Avatar src={imageProfile} alt="profile" />
+            <Name>
+              <span>Name</span>
+              Markus
+            </Name>
+            <Lastname>
+              <span>Lastname</span>
+              Müller
+            </Lastname>
+            <Email>
+              <span>Email Address</span>
+              markusmuller@gmail.com
+            </Email>
+          </UserDetails>
+
+          <TotalPrice>
+            <div>Total Price</div>
+            3360.00 EUR
+          </TotalPrice>
+
+          <WrapperCheckout>
+            <PayloCheckout>
+              <img src={checkoutButton} alt="checkout button" />
+            </PayloCheckout>
+          </WrapperCheckout>
+        </PriceDetail>
       </Wrapper.BottomContent>
     </Wrapper>
   );
