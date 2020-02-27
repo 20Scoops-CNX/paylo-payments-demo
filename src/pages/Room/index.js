@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Wrapper,
   Title,
@@ -23,6 +23,27 @@ import imageProfile from 'assets/ImageProfile.png';
 import checkoutButton from 'assets/CheckoutButton.png';
 
 const Roomd = () => {
+  useEffect(() => {
+    fetch('http://fd878039.ngrok.io/booking/hotel', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'jack',
+        email: 'jokjack26172@gmail.com',
+        price: 100
+      })
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {});
+  }, []);
+
+  const handleCheckout = () => {};
+
   return (
     <Wrapper>
       <Wrapper.TopContent>
@@ -77,7 +98,7 @@ const Roomd = () => {
           </TotalPrice>
 
           <WrapperCheckout>
-            <PayloCheckout>
+            <PayloCheckout onClick={handleCheckout}>
               <img src={checkoutButton} alt="checkout button" />
             </PayloCheckout>
           </WrapperCheckout>
