@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import roomImage from 'assets/RoomImage.jpg';
 
 const Wrapper = styled.div`
   max-width: 1344px;
@@ -12,7 +11,6 @@ Wrapper.BottomContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 32px;
-  grid-row-gap: 32px;
   padding: 32px 0;
 `;
 const Title = styled.h1`
@@ -23,89 +21,101 @@ const Title = styled.h1`
   margin: 0;
   padding: 0;
 `;
-const BookBox = styled.div`
-  display: flex;
-  flex: 1;
+const RoomDetail = styled.div``;
+
+const RoomName = styled.h2`
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
 `;
-const DateAvaliable = styled.button`
-  align-self: flex-end;
-  background: #8995a0;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-`;
-const StayDates = styled.div``;
+const PriceDetail = styled.div``;
+const CheckIn = styled.div``;
+const CheckOut = styled.div``;
 const Total = styled.div``;
-const Card = styled.div`
-  background: red;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  flex-direction: column;
-  height: 346px;
-  overflow: hidden;
-  position: relative;
-  &:hover > div:last-child {
-    transform: translateY(0);
+const BookingDetailSummary = styled.div`
+  display: flex;
+  font-size: 14px;
+  line-height: 12px;
+  padding: 40px 0;
+  ${`${CheckIn}, ${CheckOut}, ${Total}`} {
+    > span {
+      display: block;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+    flex: 1;
   }
 `;
 
-const Button = styled.a`
-  background: ${({ theme: { color } }) => color.red};
-  color: #fff;
-  font-weight: 500;
-  font-size: 18px;
+const Avatar = styled.img`
+  margin-right: 15px;
+`;
+const Name = styled.div``;
+const Lastname = styled.div``;
+const Email = styled.div``;
+const UserDetails = styled.div`
+  display: flex;
+  font-size: 16px;
   line-height: 24px;
-  padding: 50px 26px;
-  text-decoration: none;
-  text-transform: uppercase;
-`;
-Card.Img = styled.div`
-  background: #fff;
-  background-image: url(${`${roomImage}`});
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  display: flex;
-  height: calc(100vh - 80px);
-  height: 100%;
-`;
-Card.Content = styled.div`
-  background: #dbe1e6;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  transform: translateY(124px);
-  transition: all 0.5s ease;
-`;
-Card.Description = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 16px 24px;
-  h3 {
-    font-size: 18px;
+  padding: 40px 0;
+  ${`${Name}, ${Lastname}, ${Email}`} {
+    > span {
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 12px;
+      padding: 3px 0 10px 0;
+    }
     flex: 1;
-    line-height: 24px;
-    letter-spacing: 0.03em;
-    padding: 0;
-    margin: 0;
+  }
+  ${Email} {
+    flex: 3;
   }
 `;
-const DescriptionTotal = styled.div`
-  display: flex;
-  justify-content: space-between;
+
+const TotalPrice = styled.div`
+  color: #000000;
+  background: #dbe1e6;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 50px;
+  text-align: center;
+  padding: 24px;
+  > div {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+  }
 `;
+
+const WrapperCheckout = styled.div`
+  background: #dbe1e6;
+  text-align: center;
+  padding: 40px;
+  margin-top: 40px;
+`;
+const PayloCheckout = styled.button`
+  background: transparent;
+  border: 0;
+`;
+
 export {
   Wrapper,
   Title,
-  BookBox,
-  StayDates,
+  RoomDetail,
+  RoomName,
+  PriceDetail,
+  BookingDetailSummary,
+  CheckIn,
+  CheckOut,
   Total,
-  Card,
-  DateAvaliable,
-  Button,
-  DescriptionTotal
+  UserDetails,
+  Avatar,
+  Name,
+  Lastname,
+  Email,
+  WrapperCheckout,
+  TotalPrice,
+  PayloCheckout
 };
