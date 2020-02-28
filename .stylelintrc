@@ -5,5 +5,11 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
-  ]
+  ],
+  "rules": {
+    "block-no-empty": null,
+    "property-no-vendor-prefix": [true, {
+      "severity": "warning"
+    }]
+  }
 }

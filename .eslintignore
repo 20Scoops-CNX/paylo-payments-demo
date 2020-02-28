@@ -1,4 +1,10 @@
+/src/registerServiceWorker.js
+/src/setupTests.js
+/service
+/scripts
+/config
+/vendor
+/server
+/build
 config-overrides.js
-vendor
-server
-build
+registerServiceWorker.js
