@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
+
 const convertHex = (hex, opacity = 1) => {
   const newHex = hex.replace('#', '');
   const rgb = {
@@ -12,6 +14,10 @@ const convertHex = (hex, opacity = 1) => {
 const Wrapper = styled.div`
   max-width: 1344px;
   margin: 0 auto;
+
+  ${media.lessThan('large')`
+    max-width: 656px;
+  `}
 `;
 Wrapper.TopContent = styled.div`
   display: flex;
@@ -21,6 +27,10 @@ Wrapper.BottomContent = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 32px;
   padding: 32px 0;
+  ${media.lessThan('large')`
+    display: block;
+    padding: 0 16px;
+  `}
 `;
 const Title = styled.h1`
   ${({ theme: { fonts } }) => fonts.loraFont()};
@@ -29,15 +39,35 @@ const Title = styled.h1`
   line-height: 48px;
   margin: 56px 0 0 0;
   padding: 0;
+  ${media.lessThan('large')`
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 40px;
+  `}
 `;
-const RoomDetail = styled.div``;
-
+const RoomDetail = styled.div`
+  > img {
+    width: 100%;
+    ${media.lessThan('large')`
+      margin: 0 -16px;
+      width: calc(100% + 32px);
+    `}
+  }
+`;
 const RoomName = styled.h2`
   font-weight: normal;
   font-size: 24px;
   line-height: 32px;
+  ${media.lessThan('large')`
+    margin-top: 32px;
+  `}
 `;
-const PriceDetail = styled.div``;
+const PriceDetail = styled.div`
+  ${media.lessThan('large')`
+    margin-top: 64px;
+  `}
+`;
 const CheckIn = styled.div``;
 const CheckOut = styled.div``;
 const Total = styled.div``;
@@ -54,6 +84,14 @@ const BookingDetailSummary = styled.div`
     }
     flex: 1;
   }
+
+  ${media.lessThan('medium')`
+    display: block;
+    padding: 10px 0;
+    > div {
+      padding-bottom: 15px;
+    }
+  `}
 `;
 const Avatar = styled.img`
   margin-right: 15px;
@@ -63,6 +101,7 @@ const Lastname = styled.div``;
 const Email = styled.div``;
 const UserDetails = styled.div`
   display: flex;
+  flex-wrap: wrap;
   font-size: 16px;
   line-height: 24px;
   padding: 40px 0;
@@ -78,10 +117,15 @@ const UserDetails = styled.div`
   }
   ${Email} {
     flex: 3;
+    ${media.lessThan('large')`
+      flex-basis: 100%;
+      padding-left: 59px;
+      padding-top: 15px;
+    `}
   }
 `;
 const TotalPrice = styled.div`
-  color: #000000;
+  color: #000;
   background: ${convertHex('#dbe1e6', 0.2)};
   font-weight: normal;
   font-size: 36px;
@@ -114,6 +158,11 @@ const PersonalTitle = styled.h5`
     margin-right: 10px;
   }
 `;
+const HotelCurrency = styled.div`
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+`;
 export {
   Wrapper,
   Title,
@@ -132,5 +181,6 @@ export {
   WrapperCheckout,
   TotalPrice,
   PayloCheckout,
-  PersonalTitle
+  PersonalTitle,
+  HotelCurrency
 };

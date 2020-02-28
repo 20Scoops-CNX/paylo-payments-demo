@@ -17,7 +17,8 @@ import {
   TotalPrice,
   WrapperCheckout,
   PayloCheckout,
-  PersonalTitle
+  PersonalTitle,
+  HotelCurrency
 } from './index.view';
 import roomImage from 'assets/RoomImage.jpg';
 import imageProfile from 'assets/ImageProfile.png';
@@ -78,10 +79,10 @@ const Roomd = () => {
               560.00 EUR x 6
             </Total>
           </BookingDetailSummary>
-          <p>
+          <HotelCurrency>
             <strong>3360.00 EUR Total for stay in hotel’s currency</strong>
             <br /> Estimted government taxes and fees - Included
-          </p>
+          </HotelCurrency>
         </RoomDetail>
 
         <PriceDetail>
