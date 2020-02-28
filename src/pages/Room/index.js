@@ -26,16 +26,23 @@ import { ReactComponent as User } from 'assets/User.svg';
 
 const Roomd = () => {
   const handleCheckout = () => {
-    fetch('http://localhost:8080/booking/hotel', {
+    fetch('https://staging-api-pay.pay-lo.com/v1/payment/request', {
       method: 'post',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'Markus',
-        email: 'markusmuller@gmail.com',
-        price: 100
+        // Please note this key is for demo only *recomended use in server side
+        pbkey: '3ad3c509f1500e60052af166d9cfe692',
+        pvkey:
+          'ef4f6dacfea1f5a6f5c33810fa6f65d95fe9ea7e65c96af5d58ac94443fae126',
+        amount: 100,
+        name: 'Markus Müller',
+        email: 'paylomerchant1@gmail.com',
+        success_url: 'https://demo.pay-lo.com/results',
+        fail_url: 'https://demo.pay-lo.com/failed',
+        back_url: 'https://demo.pay-lo.com/home'
       })
     })
       .then(function(response) {
