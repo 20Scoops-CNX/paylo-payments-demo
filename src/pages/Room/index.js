@@ -49,7 +49,7 @@ const Roomd = () => {
         return response.json();
       })
       .then(function(data) {
-        window.location.assign(data.redirect_url);
+        window.location.assign(data.url);
       });
   };
 
