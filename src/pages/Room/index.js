@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import {
   Wrapper,
   Title,
@@ -17,11 +16,13 @@ import {
   Email,
   TotalPrice,
   WrapperCheckout,
-  PayloCheckout
+  PayloCheckout,
+  PersonalTitle
 } from './index.view';
 import roomImage from 'assets/RoomImage.jpg';
 import imageProfile from 'assets/ImageProfile.png';
 import checkoutButton from 'assets/CheckoutButton.png';
+import { ReactComponent as User } from 'assets/User.svg';
 
 const Roomd = () => {
   const handleCheckout = () => {
@@ -32,8 +33,8 @@ const Roomd = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'jack',
-        email: 'jokjack26172@gmail.com',
+        name: 'Markus',
+        email: 'markusmuller@gmail.com',
         price: 100
       })
     })
@@ -75,8 +76,11 @@ const Roomd = () => {
             <br /> Estimted government taxes and fees - Included
           </p>
         </RoomDetail>
+
         <PriceDetail>
-          <h5>Personal Information</h5>
+          <PersonalTitle>
+            <User /> Personal Information
+          </PersonalTitle>
           <UserDetails>
             <Avatar src={imageProfile} alt="profile" />
             <Name>

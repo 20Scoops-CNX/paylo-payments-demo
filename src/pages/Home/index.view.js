@@ -10,6 +10,13 @@ const Header = styled.header`
 `;
 Header.Logo = styled.div`
   padding: 0 64px;
+
+  ${media.lessThan('medium')`
+    svg {
+      width: 80px;
+      height: 40px;
+    }
+  `}
 `;
 Header.BookButton = styled.a`
   background: ${({ theme: { color } }) => color.red};
@@ -29,9 +36,9 @@ const Content = styled.main`
   display: flex;
   height: calc(100vh - 80px);
   transition: background-position 0.2s ease;
-  ${media.lessThan('medium')`
+  ${media.lessThan('large')`
     background-position: -189px  40px;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 300px);
   `}
 `;
 const Title = styled.h1`
@@ -72,7 +79,7 @@ const VericalText = styled.div`
   line-height: 35px;
   text-align: center;
 
-  ${media.lessThan('medium')`
+  ${media.lessThan('large')`
     font-size: 14px;
     line-height: 29px;
   `}
@@ -91,16 +98,20 @@ const TextLeft = styled.div`
   position: relative;
   ${Title} {
     bottom: 64px;
-    left: 64px;
+    left: 60px;
     position: absolute;
 
-    ${media.lessThan('medium')`
+    ${media.lessThan('large')`
       bottom: -190px;
     `}
   }
 
-  ${media.lessThan('medium')`
+  ${media.lessThan('large')`
     width: 130px;
+  `}
+
+  ${media.lessThan('medium')`
+    width: 0;
   `}
 `;
 const ImageRight = styled.div`

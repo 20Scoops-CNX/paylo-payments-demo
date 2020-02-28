@@ -1,4 +1,13 @@
 import styled from 'styled-components';
+const convertHex = (hex, opacity = 1) => {
+  const newHex = hex.replace('#', '');
+  const rgb = {
+    r: parseInt(newHex.substring(0, 2), 16),
+    g: parseInt(newHex.substring(2, 4), 16),
+    b: parseInt(newHex.substring(4, 6), 16)
+  };
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+};
 
 const Wrapper = styled.div`
   max-width: 1344px;
@@ -18,7 +27,7 @@ const Title = styled.h1`
   font-weight: normal;
   font-size: 48px;
   line-height: 48px;
-  margin: 0;
+  margin: 56px 0 0 0;
   padding: 0;
 `;
 const RoomDetail = styled.div``;
@@ -46,7 +55,6 @@ const BookingDetailSummary = styled.div`
     flex: 1;
   }
 `;
-
 const Avatar = styled.img`
   margin-right: 15px;
 `;
@@ -72,10 +80,9 @@ const UserDetails = styled.div`
     flex: 3;
   }
 `;
-
 const TotalPrice = styled.div`
   color: #000000;
-  background: #dbe1e6;
+  background: ${convertHex('#dbe1e6', 0.2)};
   font-weight: normal;
   font-size: 36px;
   line-height: 50px;
@@ -88,9 +95,8 @@ const TotalPrice = styled.div`
     line-height: 12px;
   }
 `;
-
 const WrapperCheckout = styled.div`
-  background: #dbe1e6;
+  background: ${convertHex('#dbe1e6', 0.2)};
   text-align: center;
   padding: 40px;
   margin-top: 40px;
@@ -99,7 +105,15 @@ const PayloCheckout = styled.button`
   background: transparent;
   border: 0;
 `;
-
+const PersonalTitle = styled.h5`
+  display: flex;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  svg {
+    margin-right: 10px;
+  }
+`;
 export {
   Wrapper,
   Title,
@@ -117,5 +131,6 @@ export {
   Email,
   WrapperCheckout,
   TotalPrice,
-  PayloCheckout
+  PayloCheckout,
+  PersonalTitle
 };
