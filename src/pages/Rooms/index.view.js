@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import roomImage from 'assets/RoomImage.jpg';
 import { ReactComponent as CalendarSvg } from 'assets/calendar.svg';
 import { ReactComponent as ClockSvg } from 'assets/clock.svg';
@@ -7,11 +8,25 @@ const Wrapper = styled.div`
   max-width: 1344px;
   margin: 0 auto;
   padding: 0px 48px;
+
+  ${media.lessThan('large')`
+    max-width: 656px;
+  `}
+
+  ${media.lessThan('medium')`
+    padding: 0px;
+  `}
 `;
 Wrapper.TopContent = styled.div`
   display: flex;
   height: 104px;
   align-items: flex-end;
+  ${media.lessThan('large')`
+    align-items: start;
+    flex-direction: column-reverse;
+    padding-top: 56px;
+    height: auto;
+  `}
 `;
 Wrapper.BottomContent = styled.div`
   display: grid;
@@ -19,6 +34,10 @@ Wrapper.BottomContent = styled.div`
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   padding: 32px 0;
+
+  ${media.lessThan('large')`
+    display: block;
+  `}
 `;
 const Title = styled.h1`
   ${({ theme: { fonts } }) => fonts.loraFont()};
@@ -27,20 +46,42 @@ const Title = styled.h1`
   line-height: 48px;
   margin: 0;
   padding: 0;
+
+  ${media.lessThan('large')`
+    align-self: flex-end;
+  `}
+
+  ${media.lessThan('medium')`
+    align-self: flex-start;
+    padding: 0 0 24px 16px;
+  `}
 `;
 const BookBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex: 1;
+`;
+BookBox.FirstBox = styled.div`
+  ${media.lessThan('large')`
+    flex-basis: 100%;
+    margin-bottom: 26px;
+  `}
+  ${media.lessThan('medium')`
+    padding-left: 16px;
+  `}
 `;
 const DateAvaliable = styled.button`
   align-self: flex-end;
   background: #8995a0;
+  border: 0;
+  border-radius: 2px;
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
   display: flex;
   align-items: center;
-  color: #ffffff;
+  color: #fff;
+  padding: 2px 10px;
 `;
 const ClockIcon = styled(ClockSvg)`
   height: 20px;
@@ -51,9 +92,17 @@ const CalendarIcon = styled(CalendarSvg)`
   height: 20px;
   width: 20px;
   margin: 22px 36px 0px 52px;
+  ${media.lessThan('large')`
+    margin: 5px 30px 0 0;
+  `}
 `;
 const StayDates = styled.div`
   line-height: 24px;
+  display: flex;
+  ${media.lessThan('medium')`
+    flex-basis: 100%;
+    padding: 0 20px;
+  `}
 `;
 const Total = styled.div`
   height: 50px;
@@ -80,19 +129,29 @@ const Total = styled.div`
       #957040 100%
     );
   }
+
+  ${media.lessThan('medium')`
+    padding: 14px 0 0 50px;
+    &:before {
+      width: 0;
+    }
+  `}
 `;
 const Card = styled.div`
-  background: red;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   flex-direction: column;
   height: 346px;
   overflow: hidden;
+  margin-bottom: 32px;
   position: relative;
   &:hover > div:last-child {
     transform: translateY(0);
   }
+  ${media.lessThan('medium')`
+    margin-bottom: 0;
+  `}
 `;
 
 const Button = styled.a`
@@ -105,6 +164,15 @@ const Button = styled.a`
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
+  ${media.lessThan('medium')`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    width: 90px;
+    box-sizing: border-box;
+    padding: 36px 0;
+    text-align: center;
+  `}
 `;
 Card.Img = styled.div`
   background: #fff;
@@ -123,7 +191,7 @@ Card.Content = styled.div`
   left: 0;
   width: 100%;
   transform: translateY(124px);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 `;
 Card.Description = styled.div`
   flex: 1;
@@ -137,11 +205,22 @@ Card.Description = styled.div`
     letter-spacing: 0.03em;
     padding: 0;
     margin: 0;
+    ${media.lessThan('medium')`
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+    `}
   }
 `;
 const DescriptionTotal = styled.div`
   display: flex;
   justify-content: space-between;
+  ${media.lessThan('medium')`
+    flex-direction: column;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+  `}
 `;
 export {
   Wrapper,

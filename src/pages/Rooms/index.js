@@ -18,14 +18,18 @@ const Rooms = () => {
     <Wrapper>
       <Wrapper.TopContent>
         <BookBox>
-          <DateAvaliable>
-            <ClockIcon />
-            Only date available
-          </DateAvaliable>
-          <CalendarIcon />
+          <BookBox.FirstBox>
+            <DateAvaliable>
+              <ClockIcon />
+              Only date available
+            </DateAvaliable>
+          </BookBox.FirstBox>
           <StayDates>
-            <span>Stay Dates</span>
-            <div>Fri, Sep 25, 2020 - Wed 30, Sep 30, 2020</div>
+            <CalendarIcon />
+            <div>
+              <span>Stay Dates</span>
+              <div>Fri, Sep 25, 2020 - Wed 30, Sep 30, 2020</div>
+            </div>
           </StayDates>
           <Total>
             <span>Total for Stay</span>
