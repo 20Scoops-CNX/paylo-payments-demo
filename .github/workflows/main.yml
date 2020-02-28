@@ -49,7 +49,6 @@ jobs:
       matrix:
         node-version: [12.x]
     needs: install-and-check
-
     # if: github.event_name == 'push' && endsWith(github.ref, 'develop')
     steps:
       - uses: actions/checkout@master
@@ -64,7 +63,6 @@ jobs:
 
       - name: Build
         run: |
-          ./prod/env/generate-env --env=${GITHUB_REF#refs/heads/}
           yarn build
         env:
           CI: true
