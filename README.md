@@ -31,13 +31,13 @@ you can clone and configure following this steps
 
 clone PayLo sample project locally
 
-```
+```bash
 git clone git@github.com:20Scoops-CNX/paylo-payments-demo.git
 ```
 
 Install project denpendencies
 
-```
+```bash
 cd paylo-payments-demo && yarn install
 ```
 
@@ -68,7 +68,7 @@ to see full documentation [Document](https://developer.pay-lo.com/#/api-payment?
 
 you can run the example project following command
 
-```
+```js
 yarn start
 ```
 
