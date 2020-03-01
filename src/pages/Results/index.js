@@ -5,7 +5,8 @@ import {
   BackLink,
   WrapperImage,
   Title,
-  Description
+  Description,
+  ClickHere
 } from './index.view';
 import { ReactComponent as HotelLogo } from 'assets/Logo.svg';
 import roomImage from 'assets/RoomImage.jpg';
@@ -20,23 +21,20 @@ const Results = () => {
         </Logo>
       </Header>
       <Content>
-        <WrapperImage>
+        <WrapperImage error>
           <img src={roomImage} alt="room" />
         </WrapperImage>
-
         <Title>Success</Title>
-
         <Description>
           Check your email for a booking confirmation. We'll see you soon! You
           can check in on arrival from 1:00 PM on Friday, September 25, 2020.
         </Description>
-
         <Description>
           Booking Ref. R-BE-19283102
           <br />
-          To print your booking click here
+          To print your booking <ClickHere>click here</ClickHere>
         </Description>
-        <BackLink>BACK TO Results</BackLink>
+        <BackLink to="/">BACK TO Results</BackLink>
       </Content>
     </div>
   );
