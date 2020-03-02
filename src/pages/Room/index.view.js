@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-
-const convertHex = (hex, opacity = 1) => {
-  const newHex = hex.replace('#', '');
-  const rgb = {
-    r: parseInt(newHex.substring(0, 2), 16),
-    g: parseInt(newHex.substring(2, 4), 16),
-    b: parseInt(newHex.substring(4, 6), 16)
-  };
-  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
-};
+import { convertHex } from 'utils';
 
 const Wrapper = styled.div`
   max-width: 1344px;
@@ -157,7 +148,10 @@ const WrapperCheckout = styled.div`
 const PayloCheckout = styled.button`
   background: transparent;
   border: 0;
-
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
   ${media.lessThan('medium')`
     > img {
       width: 100%;

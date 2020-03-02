@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Wrapper,
   Title,
@@ -24,9 +24,12 @@ import roomImage from 'assets/RoomImage.jpg';
 import imageProfile from 'assets/ImageProfile.png';
 import checkoutButton from 'assets/CheckoutButton.png';
 import { ReactComponent as User } from 'assets/User.svg';
+import Loading from 'components/Loading';
 
 const Roomd = () => {
+  const [loading, setLoading] = useState(false);
   const handleCheckout = () => {
+    setLoading(true);
     fetch('https://staging-api-pay.pay-lo.com/v1/payment/request', {
       method: 'post',
       headers: {
@@ -42,8 +45,8 @@ const Roomd = () => {
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
         success_url: 'https://demo.pay-lo.com/results',
-        fail_url: 'https://demo.pay-lo.com/failed',
-        back_url: 'https://demo.pay-lo.com/home'
+        fail_url: 'https://demo.pay-lo.com/results',
+        back_url: 'https://demo.pay-lo.com'
       })
     })
       .then(function(response) {
@@ -51,11 +54,16 @@ const Roomd = () => {
       })
       .then(function(data) {
         window.location.assign(data.url);
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <Wrapper>
+      {loading ? <Loading /> : null}
       <Wrapper.TopContent>
         <Title>Check Out</Title>
       </Wrapper.TopContent>
@@ -109,7 +117,6 @@ const Roomd = () => {
             <div>Total Price</div>
             3360.00 EUR
           </TotalPrice>
-
           <WrapperCheckout>
             <PayloCheckout onClick={handleCheckout}>
               <img src={checkoutButton} alt="checkout button" />

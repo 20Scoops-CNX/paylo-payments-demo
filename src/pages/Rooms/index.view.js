@@ -62,6 +62,7 @@ const BookBox = styled.div`
   flex: 1;
 `;
 BookBox.FirstBox = styled.div`
+  margin-top: auto;
   ${media.lessThan('large')`
     flex-basis: 100%;
     margin-bottom: 26px;
@@ -103,6 +104,12 @@ const StayDates = styled.div`
     flex-basis: 100%;
     padding: 0 20px;
   `}
+
+  span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+  }
 `;
 const Total = styled.div`
   height: 50px;
@@ -130,6 +137,12 @@ const Total = styled.div`
     );
   }
 
+  > span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+  }
+
   ${media.lessThan('medium')`
     padding: 14px 0 0 50px;
     &:before {
@@ -144,7 +157,6 @@ const Card = styled.div`
   flex-direction: column;
   height: 346px;
   overflow: hidden;
-  margin-bottom: 32px;
   position: relative;
   &:hover > div:last-child {
     transform: translateY(0);

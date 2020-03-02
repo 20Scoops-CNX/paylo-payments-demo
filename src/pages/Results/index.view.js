@@ -1,19 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import check from 'assets/Check.png';
 import cross from 'assets/Cross.png';
 import media from 'styled-media-query';
 import patternSuccess from 'assets/patternSuccess.svg';
-
-const convertHex = (hex, opacity = 1) => {
-  const newHex = hex.replace('#', '');
-  const rgb = {
-    r: parseInt(newHex.substring(0, 2), 16),
-    g: parseInt(newHex.substring(2, 4), 16),
-    b: parseInt(newHex.substring(4, 6), 16)
-  };
-  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
-};
+import { convertHex } from 'utils';
 
 const Header = styled.header`
   align-items: start;
@@ -25,6 +16,13 @@ const Header = styled.header`
   background-position: left top;
   padding-top: 10px;
   height: 273px;
+
+  ${({ error }) =>
+    error &&
+    css`
+      transform: scaleX(-1);
+    `}
+
   ${media.lessThan('medium')`
     background-image: none;
     height: 245px;
@@ -32,6 +30,11 @@ const Header = styled.header`
 `;
 Header.Logo = styled.div`
   padding: 0 64px;
+  ${({ error }) =>
+    error &&
+    css`
+      transform: scaleX(-1);
+    `}
 `;
 const Content = styled.main`
   background: #fff;
