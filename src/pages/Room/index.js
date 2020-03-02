@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Wrapper,
   Title,
@@ -25,9 +26,15 @@ import imageProfile from 'assets/ImageProfile.png';
 import checkoutButton from 'assets/CheckoutButton.png';
 import { ReactComponent as User } from 'assets/User.svg';
 import Loading from 'components/Loading';
+import { rooms } from 'mocks';
 
 const Roomd = () => {
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
+  const room = rooms[id];
+  if (!room) return null;
+
   const handleCheckout = () => {
     setLoading(true);
     fetch('https://staging-api-pay.pay-lo.com/v1/payment/request', {
@@ -41,7 +48,7 @@ const Roomd = () => {
         pbkey: '3ad3c509f1500e60052af166d9cfe692',
         pvkey:
           'ef4f6dacfea1f5a6f5c33810fa6f65d95fe9ea7e65c96af5d58ac94443fae126',
-        amount: 100,
+        amount: room.price,
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
         success_url: 'https://demo.pay-lo.com/results',
@@ -60,7 +67,6 @@ const Roomd = () => {
         setLoading(false);
       });
   };
-
   return (
     <Wrapper>
       {loading ? <Loading /> : null}
@@ -70,9 +76,7 @@ const Roomd = () => {
       <Wrapper.BottomContent>
         <RoomDetail>
           <img src={roomImage} alt="room" />
-          <RoomName>
-            Moxy double sleeper, Guest room, 2 Twin/Single bed(s)
-          </RoomName>
+          <RoomName>{room.name}</RoomName>
           <BookingDetailSummary>
             <CheckIn>
               <span>Check IN</span>
@@ -80,15 +84,17 @@ const Roomd = () => {
             </CheckIn>
             <CheckOut>
               <span>Check OUT</span>
-              Wed 30, Sep 30, 2020
+              Sat 26, Sep 30, 2020
             </CheckOut>
             <Total>
               <span>Total for Stay</span>
-              560.00 EUR x 6
+              {room.price.toFixed(2)} EUR x 1
             </Total>
           </BookingDetailSummary>
           <HotelCurrency>
-            <strong>3360.00 EUR Total for stay in hotel’s currency</strong>
+            <strong>
+              {room.price.toFixed(2)} EUR Total for stay in hotel’s currency
+            </strong>
             <br /> Estimted government taxes and fees - Included
           </HotelCurrency>
         </RoomDetail>
@@ -115,7 +121,7 @@ const Roomd = () => {
 
           <TotalPrice>
             <div>Total Price</div>
-            3360.00 EUR
+            {room.price.toFixed(2)} EUR
           </TotalPrice>
           <WrapperCheckout>
             <PayloCheckout onClick={handleCheckout}>
