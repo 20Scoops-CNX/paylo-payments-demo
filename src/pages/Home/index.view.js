@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import pattern from 'assets/Pattern.jpg';
+import logoPiece from 'assets/LogoPiece.svg';
 import hotelImage from 'assets/HeroImage.jpg';
 
 const Header = styled.header`
@@ -10,8 +11,8 @@ const Header = styled.header`
 `;
 Header.Logo = styled.div`
   padding: 0 64px;
-
   ${media.lessThan('medium')`
+    padding: 0 16px;
     svg {
       width: 80px;
       height: 40px;
@@ -27,6 +28,12 @@ Header.BookButton = styled.a`
   padding: 28px 46px;
   text-decoration: none;
   text-transform: uppercase;
+  ${media.lessThan('medium')`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 16px 28px;
+  `}
 `;
 const Content = styled.main`
   background: #fff;
@@ -36,9 +43,13 @@ const Content = styled.main`
   display: flex;
   height: calc(100vh - 80px);
   transition: background-position 0.2s ease;
+  min-height: 642px;
   ${media.lessThan('large')`
     background-position: -189px  40px;
     height: calc(100vh - 300px);
+  `}
+  ${media.lessThan('medium')`
+    min-height: 270px;
   `}
 `;
 const Title = styled.h1`
@@ -51,18 +62,10 @@ const Title = styled.h1`
   position: relative;
 
   &::before {
-    background: linear-gradient(
-      90deg,
-      #bc945d 0.01%,
-      #957040 27.85%,
-      #c79b60 42.6%,
-      #eebc79 55.84%,
-      #fdc983 62.75%,
-      #ebba78 70.85%,
-      #be935b 86.93%,
-      #957040 100%
-    );
     content: '';
+    background-image: url(${`${logoPiece}`});
+    background-repeat: no-repeat;
+    background-position: center;
     width: 150px;
     height: 1px;
     position: absolute;
@@ -103,6 +106,9 @@ const TextLeft = styled.div`
 
     ${media.lessThan('large')`
       bottom: -190px;
+    `}
+    ${media.lessThan('medium')`
+      left: 32px;
     `}
   }
 
