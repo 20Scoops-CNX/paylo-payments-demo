@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import roomImage from 'assets/RoomImage.jpg';
+import roomImage1 from 'assets/RoomImage1.jpg';
+import roomImage2 from 'assets/RoomImage2.jpg';
+import roomImage3 from 'assets/RoomImage3.jpg';
 import { ReactComponent as CalendarSvg } from 'assets/calendar.svg';
 import { ReactComponent as ClockSvg } from 'assets/clock.svg';
 
@@ -158,6 +161,20 @@ const Card = styled.div`
   height: 346px;
   overflow: hidden;
   position: relative;
+
+  &:nth-of-type(1) > div:first-child {
+    background-image: url(${`${roomImage}`});
+  }
+  &:nth-of-type(2) > div:first-child {
+    background-image: url(${`${roomImage1}`});
+  }
+  &:nth-of-type(3) > div:first-child {
+    background-image: url(${`${roomImage2}`});
+  }
+  &:nth-of-type(4) > div:first-child {
+    background-image: url(${`${roomImage3}`});
+  }
+
   &:hover > div:last-child {
     transform: translateY(0);
   }
@@ -165,7 +182,9 @@ const Card = styled.div`
     margin-bottom: 0;
   `}
 `;
-
+const SoftColor = styled.span`
+  color: #8995a0;
+`;
 const Button = styled.a`
   background: ${({ theme: { color } }) => color.red};
   color: #fff;
@@ -188,7 +207,6 @@ const Button = styled.a`
 `;
 Card.Img = styled.div`
   background: #fff;
-  background-image: url(${`${roomImage}`});
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -245,5 +263,6 @@ export {
   Button,
   DescriptionTotal,
   ClockIcon,
-  CalendarIcon
+  CalendarIcon,
+  SoftColor
 };

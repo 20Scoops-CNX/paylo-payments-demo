@@ -1,4 +1,5 @@
 import React from 'react';
+import { rooms } from 'mocks';
 import {
   Wrapper,
   Title,
@@ -10,7 +11,8 @@ import {
   Button,
   DescriptionTotal,
   ClockIcon,
-  CalendarIcon
+  CalendarIcon,
+  SoftColor
 } from './index.view';
 
 const Rooms = () => {
@@ -28,26 +30,28 @@ const Rooms = () => {
             <CalendarIcon />
             <div>
               <span>Stay Dates</span>
-              <div>Fri, Sep 25, 2020 - Wed 30, Sep 30, 2020</div>
+              <div>Fri, Sep 25, 2020 - Sat, Sep 26, 2020</div>
             </div>
           </StayDates>
           <Total>
             <span>Total for Stay</span>
-            <div>560,00 EUR x 6</div>
+            <div>100 EUR x 1</div>
           </Total>
         </BookBox>
         <Title>Rooms</Title>
       </Wrapper.TopContent>
       <Wrapper.BottomContent>
-        {[...Array(4)].map((v, i) => (
+        {rooms.map((room, i) => (
           <Card key={i}>
             <Card.Img />
             <Card.Content>
               <Card.Description>
-                <h3>Moxy double sleeper, Guest room, 2 Twin/Single bed(s)</h3>
+                <h3>{room.name}</h3>
                 <DescriptionTotal>
-                  <span>560,00 EUR / Night</span>
-                  <span>x6 3360,00 EUR</span>
+                  <span>{room.price} EUR / Night</span>
+                  <span>
+                    <SoftColor>X1</SoftColor> {room.price.toFixed(2)} EUR
+                  </span>
                 </DescriptionTotal>
               </Card.Description>
               <Button href={`/rooms/${i}`}>Choose Room</Button>
