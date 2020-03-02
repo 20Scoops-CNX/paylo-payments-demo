@@ -14,9 +14,11 @@ const convertHex = (hex, opacity = 1) => {
 const Wrapper = styled.div`
   max-width: 1344px;
   margin: 0 auto;
+  padding: 0 15px;
 
   ${media.lessThan('large')`
     max-width: 656px;
+    padding: 0;
   `}
 `;
 Wrapper.TopContent = styled.div`
@@ -44,6 +46,9 @@ const Title = styled.h1`
     font-size: 48px;
     line-height: 48px;
     margin-bottom: 40px;
+  `}
+  ${media.lessThan('medium')`
+    padding: 0 16px;
   `}
 `;
 const RoomDetail = styled.div`
@@ -144,10 +149,20 @@ const WrapperCheckout = styled.div`
   text-align: center;
   padding: 40px;
   margin-top: 40px;
+  ${media.lessThan('medium')`
+    padding: 32px 0;
+    margin-bottom: 40px;
+  `}
 `;
 const PayloCheckout = styled.button`
   background: transparent;
   border: 0;
+
+  ${media.lessThan('medium')`
+    > img {
+      width: 100%;
+    }
+  `}
 `;
 const PersonalTitle = styled.h5`
   display: flex;
