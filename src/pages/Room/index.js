@@ -32,6 +32,9 @@ const Roomd = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
+  const room = rooms[id];
+  if (!room) return null;
+
   const handleCheckout = () => {
     setLoading(true);
     fetch('https://staging-api-pay.pay-lo.com/v1/payment/request', {
@@ -45,7 +48,7 @@ const Roomd = () => {
         pbkey: '3ad3c509f1500e60052af166d9cfe692',
         pvkey:
           'ef4f6dacfea1f5a6f5c33810fa6f65d95fe9ea7e65c96af5d58ac94443fae126',
-        amount: 100,
+        amount: room.price,
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
         success_url: 'https://demo.pay-lo.com/results',
@@ -64,9 +67,6 @@ const Roomd = () => {
         setLoading(false);
       });
   };
-
-  const room = rooms[id];
-  if (!room) return null;
   return (
     <Wrapper>
       {loading ? <Loading /> : null}
