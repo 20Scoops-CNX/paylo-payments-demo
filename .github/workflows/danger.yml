@@ -20,6 +20,8 @@ jobs:
 
       - name: Install
         run: yarn
+        env:
+          CI: true
 
       - name: Danger Review
         uses: MeilCli/danger-action@master
