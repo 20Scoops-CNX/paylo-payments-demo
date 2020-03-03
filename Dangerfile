@@ -12,4 +12,5 @@ warn("Freakin Huge PR") if git.lines_of_code > 1000
 
 eslint.config_file = ".eslintrc"
 eslint.ignore_file = ".eslintignore"
+eslint.filtering = true
 eslint.lint
