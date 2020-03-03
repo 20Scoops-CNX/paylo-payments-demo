@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import divider from 'assets/Divider.svg';
 import { convertHex } from 'utils';
 
 const Wrapper = styled.div`
@@ -18,7 +19,7 @@ Wrapper.TopContent = styled.div`
 Wrapper.BottomContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 32px;
+  grid-column-gap: 65px;
   padding: 32px 0;
   ${media.lessThan('large')`
     display: block;
@@ -43,6 +44,20 @@ const Title = styled.h1`
   `}
 `;
 const RoomDetail = styled.div`
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    right: -32px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #dbe1e6;
+    ${media.lessThan('large')`
+      width: 0;
+    `}
+  }
+
   > img {
     width: 100%;
     ${media.lessThan('large')`
@@ -73,14 +88,29 @@ const BookingDetailSummary = styled.div`
   line-height: 12px;
   padding: 40px 0;
   ${`${CheckIn}, ${CheckOut}, ${Total}`} {
-    > span {
+    flex: 1;
+    position: relative;
+    > strong {
       display: block;
       font-weight: 500;
       padding: 8px 0;
     }
-    flex: 1;
+    &:not(:last-child)::before {
+      content: '';
+      width: 1px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background-image: url(${`${divider}`});
+      background-repeat: no-repeat;
+      background-position: center;
+      ${media.lessThan('large')`
+        width: 0;
+      `}
+    }
   }
-
   ${media.lessThan('medium')`
     display: block;
     padding: 10px 0;
@@ -102,6 +132,7 @@ const UserDetails = styled.div`
   line-height: 24px;
   padding: 40px 0;
   ${`${Name}, ${Lastname}, ${Email}`} {
+    flex: 1;
     > span {
       display: block;
       font-weight: 500;
@@ -109,7 +140,6 @@ const UserDetails = styled.div`
       line-height: 12px;
       padding: 3px 0 10px 0;
     }
-    flex: 1;
   }
   ${Email} {
     flex: 3;
@@ -172,6 +202,9 @@ const HotelCurrency = styled.div`
   font-size: 16px;
   line-height: 24px;
 `;
+const SoftColor = styled.span`
+  color: #8995a0;
+`;
 export {
   Wrapper,
   Title,
@@ -191,5 +224,6 @@ export {
   TotalPrice,
   PayloCheckout,
   PersonalTitle,
-  HotelCurrency
+  HotelCurrency,
+  SoftColor
 };
