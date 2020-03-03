@@ -57,3 +57,6 @@ DEPENDENCIES
   danger
   danger-conflict_checker
   danger-eslint
+
+BUNDLED WITH
+   2.0.1
