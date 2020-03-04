@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   width: 100vw;
   top: 0;
   left: 0;
+  z-index: 999;
   .spinner {
     height: 60px;
     text-align: center;

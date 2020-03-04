@@ -63,8 +63,8 @@ const Roomd = () => {
       .then(function(data) {
         window.location.assign(data.url);
       })
-      .catch(err => console.log(err))
-      .finally(() => {
+      .catch(err => {
+        console.log(err);
         setLoading(false);
       });
   };
