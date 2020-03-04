@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import roomImage from 'assets/RoomImage.jpg';
-import roomImage1 from 'assets/RoomImage1.jpg';
-import roomImage2 from 'assets/RoomImage2.jpg';
-import roomImage3 from 'assets/RoomImage3.jpg';
 import { ReactComponent as CalendarSvg } from 'assets/calendar.svg';
 import { ReactComponent as ClockSvg } from 'assets/clock.svg';
 
@@ -161,20 +157,6 @@ const Card = styled.div`
   height: 346px;
   overflow: hidden;
   position: relative;
-
-  &:nth-of-type(1) > div:first-child {
-    background-image: url(${`${roomImage}`});
-  }
-  &:nth-of-type(2) > div:first-child {
-    background-image: url(${`${roomImage1}`});
-  }
-  &:nth-of-type(3) > div:first-child {
-    background-image: url(${`${roomImage2}`});
-  }
-  &:nth-of-type(4) > div:first-child {
-    background-image: url(${`${roomImage3}`});
-  }
-
   &:hover > div:last-child {
     transform: translateY(0);
   }
@@ -212,6 +194,11 @@ Card.Img = styled.div`
   display: flex;
   height: calc(100vh - 80px);
   height: 100%;
+  ${({ src }) =>
+    src &&
+    `
+    background-image: url(${`${src}`});
+  `}
 `;
 Card.Content = styled.div`
   background: #dbe1e6;
