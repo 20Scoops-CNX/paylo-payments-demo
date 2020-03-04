@@ -19,7 +19,8 @@ import {
   WrapperCheckout,
   PayloCheckout,
   PersonalTitle,
-  HotelCurrency
+  HotelCurrency,
+  SoftColor
 } from './index.view';
 import roomImage from 'assets/RoomImage.jpg';
 import imageProfile from 'assets/ImageProfile.png';
@@ -62,8 +63,8 @@ const Roomd = () => {
       .then(function(data) {
         window.location.assign(data.url);
       })
-      .catch(err => console.log(err))
-      .finally(() => {
+      .catch(err => {
+        console.log(err);
         setLoading(false);
       });
   };
@@ -79,16 +80,16 @@ const Roomd = () => {
           <RoomName>{room.name}</RoomName>
           <BookingDetailSummary>
             <CheckIn>
-              <span>Check IN</span>
+              <strong>Check IN</strong>
               Fri, Sep 25, 2020
             </CheckIn>
             <CheckOut>
-              <span>Check OUT</span>
+              <strong>Check OUT</strong>
               Sat 26, Sep 30, 2020
             </CheckOut>
             <Total>
-              <span>Total for Stay</span>
-              {room.price.toFixed(2)} EUR x 1
+              <strong>Total for Stay</strong>
+              {room.price.toFixed(2)} EUR <SoftColor>x 1</SoftColor>
             </Total>
           </BookingDetailSummary>
           <HotelCurrency>
