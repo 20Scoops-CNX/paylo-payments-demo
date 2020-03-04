@@ -43,7 +43,7 @@ const Rooms = () => {
       <Wrapper.BottomContent>
         {rooms.map((room, i) => (
           <Card key={i}>
-            <Card.Img />
+            <Card.Img src={room.img} />
             <Card.Content>
               <Card.Description>
                 <h3>{room.name}</h3>

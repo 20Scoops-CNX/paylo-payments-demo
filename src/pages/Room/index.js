@@ -22,9 +22,9 @@ import {
   HotelCurrency,
   SoftColor
 } from './index.view';
-import roomImage from 'assets/RoomImage.jpg';
+
 import imageProfile from 'assets/ImageProfile.png';
-import checkoutButton from 'assets/CheckoutButton.png';
+import checkoutButton from 'assets/CheckoutButton.svg';
 import { ReactComponent as User } from 'assets/User.svg';
 import Loading from 'components/Loading';
 import { rooms } from 'mocks';
@@ -76,7 +76,7 @@ const Roomd = () => {
       </Wrapper.TopContent>
       <Wrapper.BottomContent>
         <RoomDetail>
-          <img src={roomImage} alt="room" />
+          <img src={room.img} alt="room" />
           <RoomName>{room.name}</RoomName>
           <BookingDetailSummary>
             <CheckIn>
