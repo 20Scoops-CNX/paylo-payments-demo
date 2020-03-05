@@ -70,7 +70,6 @@ const Roomd = () => {
   };
   return (
     <Wrapper>
-      {loading ? <Loading /> : null}
       <Wrapper.TopContent>
         <Title>Check Out</Title>
       </Wrapper.TopContent>
@@ -125,6 +124,7 @@ const Roomd = () => {
             {room.price.toFixed(2)} EUR
           </TotalPrice>
           <WrapperCheckout>
+            {loading ? <Loading /> : null}
             <PayloCheckout onClick={handleCheckout}>
               <img src={checkoutButton} alt="checkout button" />
             </PayloCheckout>
