@@ -170,6 +170,7 @@ const WrapperCheckout = styled.div`
   text-align: center;
   padding: 40px;
   margin-top: 40px;
+  position: relative;
   ${media.lessThan('medium')`
     padding: 32px 0;
     margin-bottom: 40px;

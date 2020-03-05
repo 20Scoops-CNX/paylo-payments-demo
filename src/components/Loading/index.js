@@ -12,14 +12,14 @@ const skStretchdelay = keyframes`
 
 const Wrapper = styled.div`
   background: ${convertHex('#ffffff', 0.7)};
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+  position: absolute;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 999;
   .spinner {
-    height: 60px;
+    height: 50px;
     text-align: center;
     font-size: 10px;
     position: absolute;
