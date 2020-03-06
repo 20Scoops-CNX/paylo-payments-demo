@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { find } from 'lodash';
 import {
   Wrapper,
   Title,
@@ -29,11 +30,11 @@ import { ReactComponent as User } from 'assets/User.svg';
 import Loading from 'components/Loading';
 import { rooms } from 'mocks';
 
-const Roomd = () => {
+const Room = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  const room = rooms[id];
+  const room = find(rooms, { id });
   if (!room) return null;
 
   const handleCheckout = () => {
@@ -52,9 +53,9 @@ const Roomd = () => {
         amount: room.price,
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
-        success_url: 'https://demo.pay-lo.com/results',
-        fail_url: 'https://demo.pay-lo.com/results',
-        back_url: 'https://demo.pay-lo.com'
+        success_url: `https://demo.pay-lo.com/${room.id}/success`,
+        fail_url: `https://demo.pay-lo.com/${room.id}/fail`,
+        back_url: `https://demo.pay-lo.com/rooms/${id}`
       })
     })
       .then(function(response) {
@@ -134,4 +135,4 @@ const Roomd = () => {
     </Wrapper>
   );
 };
-export default Roomd;
+export default Room;

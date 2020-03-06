@@ -54,7 +54,7 @@ const Rooms = () => {
                   </span>
                 </DescriptionTotal>
               </Card.Description>
-              <Button href={`/rooms/${i}`}>Choose Room</Button>
+              <Button href={`/rooms/${room.id}`}>Choose Room</Button>
             </Card.Content>
           </Card>
         ))}
