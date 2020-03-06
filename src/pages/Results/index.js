@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { find } from 'lodash';
 import {
   Header,
   Content,
@@ -10,7 +11,7 @@ import {
   ClickHere
 } from './index.view';
 import { ReactComponent as HotelLogo } from 'assets/Logo.svg';
-import roomImage from 'assets/RoomImage.jpg';
+import { rooms } from 'mocks';
 const { Logo } = Header;
 
 const useQuery = () => {
@@ -18,21 +19,28 @@ const useQuery = () => {
 };
 const Results = () => {
   const query = useQuery();
+  const { id, result } = useParams();
+
+  const room = find(rooms, { id });
+  if (!room) return null;
+
   const trasId = query.get('transaction_id');
+  const isSuccess = result === 'success';
+
   return (
     <div>
-      <Header error={!trasId}>
-        <Logo error={!trasId}>
+      <Header error={!isSuccess}>
+        <Logo error={!isSuccess}>
           <HotelLogo />
         </Logo>
       </Header>
       <Content>
-        <WrapperImage error={!trasId}>
-          <img src={roomImage} alt="room" />
+        <WrapperImage error={!isSuccess}>
+          <img src={room.img} alt="room" />
         </WrapperImage>
-        <Title>{!trasId ? 'Something went wrong' : 'Success'}</Title>
+        <Title>{!isSuccess ? 'Something went wrong' : 'Success'}</Title>
         <div>
-          {!trasId ? (
+          {!isSuccess ? (
             <Description>
               Sorry, something went wrong. We're working on it and we'll get it
               fixed as soon as we can. We apologise for the delay and any
@@ -48,7 +56,7 @@ const Results = () => {
                 25, 2020.
               </Description>
               <Description>
-                Booking Ref. R-BE-19283102
+                Booking Ref. R-BE-{trasId}
                 <br />
                 To print your booking <ClickHere>click here</ClickHere>
               </Description>

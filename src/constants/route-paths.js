@@ -10,6 +10,6 @@ const routeUrlProvider = createRouteUrlProvider();
 routeUrlProvider.set(HOME, '/');
 routeUrlProvider.set(ROOMS, '/rooms');
 routeUrlProvider.set(ROOM_DETAIL, '/rooms/:id');
-routeUrlProvider.set(RESULT, '/results');
+routeUrlProvider.set(RESULT, '/:id/:result');
 
 export default routeUrlProvider;
