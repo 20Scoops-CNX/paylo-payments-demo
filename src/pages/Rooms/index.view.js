@@ -157,6 +157,8 @@ const Card = styled.div`
   height: 346px;
   overflow: hidden;
   position: relative;
+  &:active > div:last-child,
+  &:focus > div:last-child,
   &:hover > div:last-child {
     transform: translateY(0);
   }
