@@ -5,26 +5,33 @@ on: pull_request
 jobs:
   danger:
     runs-on: ubuntu-latest
+    if: github.event_name  == 'pull_request'
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
 
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
+      - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
 
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Install
+      - name: yarn install
         run: yarn
         env:
           CI: true
 
-      - name: Danger Review
-        uses: MeilCli/danger-action@master
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-danger-gems-${{ hashFiles('Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-danger-gems-
+
+      - name: Bundle config
+        run: bundle config path vendor/bundle
+
+      - uses: MeilCli/danger-action@master
         with:
           plugins_file: 'Gemfile'
           danger_file: 'Dangerfile'
