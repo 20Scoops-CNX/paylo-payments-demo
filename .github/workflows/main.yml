@@ -4,14 +4,14 @@ on: [push, pull_request]
 jobs:
   install-and-check:
     name: Install and QA checks
-    runs-on: linux
-    
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
       - uses: actions/checkout@master
         with:
           fetch-depth: 1
-
-      - uses: actions/setup-node@v1
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@master
@@ -44,14 +44,19 @@ jobs:
 
   build-and-deploy:
     name: Build and Deploy
-    runs-on: linux
-
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     needs: install-and-check
     if: github.event_name == 'push' && endsWith(github.ref, 'develop')
     steps:
       - uses: actions/checkout@master
 
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Install
         run: yarn
