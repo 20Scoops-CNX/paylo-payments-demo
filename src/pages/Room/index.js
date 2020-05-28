@@ -21,7 +21,8 @@ import {
   PayloCheckout,
   PersonalTitle,
   HotelCurrency,
-  SoftColor
+  SoftColor,
+  ErrorMessage
 } from './index.view';
 
 import imageProfile from 'assets/ImageProfile.png';
@@ -31,6 +32,7 @@ import Loading from 'components/Loading';
 import { rooms } from 'mocks';
 
 const Room = () => {
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
@@ -47,9 +49,9 @@ const Room = () => {
       },
       body: JSON.stringify({
         // Please note this key is for demo only *recomended use in server side
-        pbkey: '3ad3c509f1500e60052af166d9cfe692',
+        pbkey: '0653d9f4cdff4de5edbb6b22cd2d5f3b',
         pvkey:
-          'ef4f6dacfea1f5a6f5c33810fa6f65d95fe9ea7e65c96af5d58ac94443fae126',
+          '6b0436eca2e69575d638f13d216c61579849ecb114f41ff836497f58e2eea069',
         amount: room.price,
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
@@ -59,14 +61,20 @@ const Room = () => {
       })
     })
       .then(function(response) {
+        if (!response.ok) {
+          throw response;
+        }
         return response.json();
       })
       .then(function(data) {
         window.location.assign(data.url);
       })
       .catch(err => {
-        console.log(err);
-        setLoading(false);
+        err.json().then(errorMessage => {
+          console.log(errorMessage);
+          setError(errorMessage.message);
+          setLoading(false);
+        });
       });
   };
   return (
@@ -126,6 +134,7 @@ const Room = () => {
           </TotalPrice>
           <WrapperCheckout>
             {loading ? <Loading /> : null}
+            <ErrorMessage>{error ? error : null}</ErrorMessage>
             <PayloCheckout onClick={handleCheckout}>
               <img src={checkoutButton} alt="checkout button" />
             </PayloCheckout>
