@@ -206,6 +206,12 @@ const HotelCurrency = styled.div`
 const SoftColor = styled.span`
   color: #8995a0;
 `;
+const ErrorMessage = styled.div`
+  font-size: 14px;
+  text-align: center;
+  color: red;
+  padding: 5px;
+`;
 export {
   Wrapper,
   Title,
@@ -226,5 +232,6 @@ export {
   PayloCheckout,
   PersonalTitle,
   HotelCurrency,
-  SoftColor
+  SoftColor,
+  ErrorMessage
 };
