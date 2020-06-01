@@ -93,7 +93,7 @@
     "@storybook/storybook-deployer": "^2.8.5",
     "@testing-library/jest-dom": "^4.2.3",
     "@testing-library/react": "^9.3.2",
-    "customize-cra": "^0.8.0",
+    "customize-cra": "^1.0.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.18.0",
