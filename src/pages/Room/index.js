@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { find } from 'lodash';
 import {
@@ -26,18 +26,45 @@ import {
 } from './index.view';
 
 import imageProfile from 'assets/ImageProfile.png';
-import checkoutButton from 'assets/CheckoutButton.svg';
+import checkoutButton from 'assets/ButtonLoading.svg';
 import { ReactComponent as User } from 'assets/User.svg';
 import Loading from 'components/Loading';
 import { rooms } from 'mocks';
 
 const Room = () => {
   const [error, setError] = useState('');
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   const room = find(rooms, { id });
-  if (!room) return null;
+
+  const fetchConfig = () => {
+    setLoading(true);
+    fetch('https://staging-api-pay.pay-lo.com/v1/payments/config', {
+      method: 'get',
+      headers: {
+        Authorization:
+          '0653d9f4cdff4de5edbb6b22cd2d5f3b:6b0436eca2e69575d638f13d216c61579849ecb114f41ff836497f58e2eea069'
+      }
+    })
+      .then(function(response) {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        setData({ ...data.data });
+        setLoading(false);
+      })
+      .catch(err => {
+        err.json().then(errorMessage => {
+          setError(errorMessage.message);
+          setLoading(false);
+        });
+      });
+  };
 
   const handleCheckout = () => {
     setLoading(true);
@@ -71,12 +98,18 @@ const Room = () => {
       })
       .catch(err => {
         err.json().then(errorMessage => {
-          console.log(errorMessage);
           setError(errorMessage.message);
           setLoading(false);
         });
       });
   };
+
+  useEffect(() => {
+    fetchConfig();
+  }, []);
+
+  if (!room) return null;
+
   return (
     <Wrapper>
       <Wrapper.TopContent>
@@ -136,7 +169,10 @@ const Room = () => {
             {loading ? <Loading /> : null}
             <ErrorMessage>{error ? error : null}</ErrorMessage>
             <PayloCheckout onClick={handleCheckout}>
-              <img src={checkoutButton} alt="checkout button" />
+              <img
+                src={data.cashback_button_image || checkoutButton}
+                alt="checkout button"
+              />
             </PayloCheckout>
           </WrapperCheckout>
         </PriceDetail>
