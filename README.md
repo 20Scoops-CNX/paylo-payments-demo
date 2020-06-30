@@ -1,6 +1,6 @@
-# PayLo Payments Demo
+# Paylo Payments Demo
 
-The PayLo API offers a wealth of data, which can be visualised in many different ways. Based on our experiences, we have assembled a set of example layouts for you to explore. They cover the basic views typically encountered on a hotel booking website. Take these as additional inspiration for your own visualization, and explore the source code to understand how to process an API response to get the most out of our service.
+The Paylo API offers a wealth of data, which can be visualised in many different ways. Based on our experiences, we have assembled a set of example layouts for you to explore. They cover the basic views typically encountered on a hotel booking website. Take these as additional inspiration for your own visualization, and explore the source code to understand how to process an API response to get the most out of our service.
 
 **You can see this demo app running in test mode on [demo.pay-lo.com](https://demo.pay-lo.com/).**
 
@@ -12,7 +12,7 @@ The PayLo API offers a wealth of data, which can be visualised in many different
 
 The frontend code for the demo is in the `src/` directory.
 
-The code logic of the PayLo integration contained within `src/pages/Room/index.js` file for creates the payment experience on the frontend using PayLo API.
+The code logic of the Paylo integration contained within `src/pages/Room/index.js` file for creates the payment experience on the frontend using Paylo API.
 
 ## Prerequisite
 
@@ -20,7 +20,7 @@ The code logic of the PayLo integration contained within `src/pages/Room/index.j
 
 ## Quick Start
 
-In this case we used fetch in client side to request to PayLo server but not recomended the flow should be request from server side in case for you api key security.
+In this case we used fetch in client side to request to Paylo server but not recomended the flow should be request from server side in case for you api key security.
 this project are based on [Reactjs framework](https://reactjs.org)
 
 ## How to run locally
@@ -29,7 +29,7 @@ this project are based on [Reactjs framework](https://reactjs.org)
 
 you can clone and configure following this steps
 
-clone PayLo sample project locally
+clone Paylo sample project locally
 
 ```bash
 git clone git@github.com:20Scoops-CNX/paylo-payments-demo.git
