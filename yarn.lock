@@ -12811,10 +12811,10 @@ ret@~0.1.10:
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
 
-retire@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/retire/-/retire-2.2.0.tgz#0a1e2293d8661ed4fef98883b01fa229098e3d57"
-  integrity sha512-VC81dywdxEy+vLHJzvxaYwOxGGxY6pSKkg9PKXsD/Fg1EI5VBARsInmnrE4durwGYLTruBVJClgVsHbTna8oLQ==
+retire@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/retire/-/retire-2.2.2.tgz#d0797134a41ca11d67ad5d8224f46a6b63590ae2"
+  integrity sha512-UmMTmXtYhbiQYMjjUb2DLtZsjnEcYknZ/LKJkTh53sGx9B3nW7DIuPw2N/EFfPpye5qJ5iTg/e7cgZIsUopuFg==
   dependencies:
     colors "^1.1.2"
     commander "2.5.x"
