@@ -81,7 +81,7 @@ const Room = () => {
           '6b0436eca2e69575d638f13d216c61579849ecb114f41ff836497f58e2eea069',
         amount: room.price,
         name: 'Markus Müller',
-        email: 'paylomerchant1@gmail.com',
+        email: 'fanzmerchant1@gmail.com',
         success_url: `https://demo.fanz.io/${room.id}/success`,
         fail_url: `https://demo.fanz.io/${room.id}/fail`,
         back_url: `https://demo.fanz.io/rooms/${id}`
