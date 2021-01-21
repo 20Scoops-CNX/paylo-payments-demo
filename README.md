@@ -1,8 +1,8 @@
-# Paylo Payments Demo
+# fanz Payments Demo
 
-The Paylo API offers a wealth of data, which can be visualised in many different ways. Based on our experiences, we have assembled a set of example layouts for you to explore. They cover the basic views typically encountered on a hotel booking website. Take these as additional inspiration for your own visualization, and explore the source code to understand how to process an API response to get the most out of our service.
+The fanz API offers a wealth of data, which can be visualised in many different ways. Based on our experiences, we have assembled a set of example layouts for you to explore. They cover the basic views typically encountered on a hotel booking website. Take these as additional inspiration for your own visualization, and explore the source code to understand how to process an API response to get the most out of our service.
 
-**You can see this demo app running in test mode on [demo.pay-lo.com](https://demo.pay-lo.com/).**
+**You can see this demo app running in test mode on [demo.fanz.io](https://demo.fanz.io/).**
 
 ## Overview
 
@@ -16,7 +16,7 @@ The code logic of the Paylo integration contained within `src/pages/Room/index.j
 
 ## Prerequisite
 
-- API key request from merchant dashboard [Documentation](https://developer.pay-lo.com)
+- API key request from merchant dashboard [Documentation](https://developer.fanz.io)
 
 ## Quick Start
 
@@ -62,7 +62,7 @@ in this sample you gonna use api key directly from source code you can go to `sr
 
 change `pbkey` and `pvkey` from your api key that you get from paylo dashboard
 and change `success_url`, `fail_url`, `back_url` to locally url as example in above.
-to see full documentation [Document](https://developer.pay-lo.com/#/api-payment?id=payment-api)
+to see full documentation [Document](https://developer.fanz.io/#/api-payment?id=payment-api)
 
 **Run project locally**
 

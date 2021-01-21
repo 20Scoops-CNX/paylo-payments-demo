@@ -41,7 +41,7 @@ const Room = () => {
 
   const fetchConfig = () => {
     setLoading(true);
-    fetch('https://staging-api-pay.pay-lo.com/v1/payments/config', {
+    fetch('https://staging-api-pay.fanz.io/v1/payments/config', {
       method: 'get',
       headers: {
         Authorization:
@@ -68,7 +68,7 @@ const Room = () => {
 
   const handleCheckout = () => {
     setLoading(true);
-    fetch('https://staging-api-pay.pay-lo.com/v1/payment/request', {
+    fetch('https://staging-api-pay.fanz.io/v1/payment/request', {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -82,9 +82,9 @@ const Room = () => {
         amount: room.price,
         name: 'Markus Müller',
         email: 'paylomerchant1@gmail.com',
-        success_url: `https://demo.pay-lo.com/${room.id}/success`,
-        fail_url: `https://demo.pay-lo.com/${room.id}/fail`,
-        back_url: `https://demo.pay-lo.com/rooms/${id}`
+        success_url: `https://demo.fanz.io/${room.id}/success`,
+        fail_url: `https://demo.fanz.io/${room.id}/fail`,
+        back_url: `https://demo.fanz.io/rooms/${id}`
       })
     })
       .then(function(response) {
