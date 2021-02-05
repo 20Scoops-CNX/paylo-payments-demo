@@ -1,4 +1,4 @@
-name: Paylo payments demo
+name: fanz payments demo
 on: [push, pull_request]
 
 jobs:
